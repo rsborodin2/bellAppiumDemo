@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.9.6"
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+def allureVersion = "2.19.0"
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    testImplementation(
+            "io.qameta.allure:allure-junit5:$allureVersion",
+            "org.junit.jupiter:junit-jupiter",
+            "org.aeonbits.owner:owner:1.0.12",
+            "io.appium:java-client:9.3.0"
+    )
+    implementation(
+            "commons-io:commons-io:2.16.1",
+            'org.aeonbits.owner:owner:1.0.12'
+    )
+    testImplementation platform(
+            'org.junit:junit-bom:5.10.0'
+    )
+}
+
+test {
+    useJUnitPlatform()
+}
+
+allure {
+    report {
+        version.set("2.19.0")
+    }
+    adapter {
+        allureJavaVersion.set("2.19.0")
+    }
+}
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
