@@ -27,7 +27,7 @@ pipeline {
 //        }
         stage('Test') {
             steps {
-                sh "adb -version"
+                sh "/usr/local/bin/adb -version"
                 sh "whoami"
                 sh "pwd"
                 sh "ls -l"
