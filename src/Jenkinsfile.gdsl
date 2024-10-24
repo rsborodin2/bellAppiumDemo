@@ -18,13 +18,13 @@ pipeline {
                 git 'https://github.com/rsborodin2/bellAppiumDemo.git' // replace with your repo
             }
         }
-        stage ('Install dependencies') {
-            steps {
-                sh "apk add nodejs"
-                sh "echo $PATH"
-                sh "npm install"
-            }
-        }
+//        stage ('Install dependencies') {
+//            steps {
+//                sh "apk add nodejs"
+//                sh "echo $PATH"
+//                sh "npm install"
+//            }
+//        }
         stage('Test') {
             steps {
                 sh "adb -version"
