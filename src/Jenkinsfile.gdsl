@@ -15,6 +15,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
+                sh 'appium --address 127.0.0.1 --port 4723'
                 sh './gradlew test --build-cache'
                 sh 'echo "Automation tests were executed"'
                 sh './gradlew clean build allureReport'
