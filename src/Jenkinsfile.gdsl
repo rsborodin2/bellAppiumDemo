@@ -13,6 +13,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/rsborodin2/bellAppiumDemo.git' // replace with your repo
+            }
+        }
         stage('Test') {
             steps {
                 sh 'appium --address 127.0.0.1 --port 4723'
