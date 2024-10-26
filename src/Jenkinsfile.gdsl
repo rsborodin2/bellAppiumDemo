@@ -35,7 +35,7 @@ pipeline {
 //                sh "ls -l"
 //                sh "echo $PATH"
 //                sh "java -version"
-                sh "/usr/local/bin/npm i -g appium"
+                sh "/usr/local/bin/npm -v"
                   sh "which java"
 //                sh "which appium"
 //                sh "echo $JAVA_HOME"
