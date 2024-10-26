@@ -43,6 +43,7 @@ public class DeviceHelper {
         try {
             p = Runtime.getRuntime().exec(command); //получаем инстанс терминала и посылаем скрипт
         } catch (IOException e){
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
         final String[] message = {""}; //массив с 1 элементом для записи строк из терминала
