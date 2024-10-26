@@ -34,15 +34,18 @@ pipeline {
 //                sh "ls -l"
 //                sh "echo $PATH"
 //                sh "java -version"
-              //  sh "/usr/local/bin/npm -v"
-                  //sh "which java"
+                //  sh "/usr/local/bin/npm -v"
+                //sh "which java"
 //                sh "which appium"
 //                sh "echo $JAVA_HOME"
 //                sh '/usr/local/bin/appium --address 127.0.0.1 --port 4723'
-                sh './gradlew test --stacktrace --build-cache'
-                sh 'echo "Automation tests were executed"'
-                allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
-//                sh './gradlew clean build allureReport'
+                try {
+                    sh './gradlew test --stacktrace --build-cache'
+                    sh 'echo "Automation tests were executed"'
+                }finally {
+                    allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
+                }
+
             }
         }
     }
