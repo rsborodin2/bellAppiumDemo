@@ -13,8 +13,7 @@ pipeline {
                     try {
                         //sh '/usr/local/bin/appium --version'
                         sh './gradlew test --build-cache'
-                    } catch (AssertionError | Exception e){
-                        e.printStackTrace()
+                    } catch (Throwable){
                         currentBuild.result = "UNSTABLE"
                     }
                     finally {
