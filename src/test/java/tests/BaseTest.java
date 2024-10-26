@@ -27,13 +27,13 @@ public class BaseTest {
     AndroidDriver driver;
     @BeforeAll
     public static void beforeAll() {
-        service = AppiumDriverLocalService.buildDefaultService();
-        service.start();
+        //service = AppiumDriverLocalService.buildDefaultService();
+        //service.start();
     }
 
     @AfterAll
     public static void afterAll(){
-            service.stop();
+           // service.stop();
 
         }
 
@@ -41,7 +41,7 @@ public class BaseTest {
     public void afterEach() throws IOException {
         ScreenshotUtils.screenshot(driver);
         Allure.addAttachment("screen dump",driver.getPageSource());
-        Allure.addAttachment("Логи logcat",driver.manage().logs().get("logcat").toJson().toString());
+//        Allure.addAttachment("Логи logcat",driver.manage().logs().get("logcat").toJson().toString());
         try {
             driver.quit();
         } catch (Exception ignored) {}
