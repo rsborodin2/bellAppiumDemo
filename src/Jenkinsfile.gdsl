@@ -35,12 +35,12 @@ pipeline {
 //                sh "ls -l"
 //                sh "echo $PATH"
 //                sh "java -version"
-                sh "/usr/local/bin/npm -v"
-                  sh "which java"
+              //  sh "/usr/local/bin/npm -v"
+                  //sh "which java"
 //                sh "which appium"
 //                sh "echo $JAVA_HOME"
 //                sh '/usr/local/bin/appium --address 127.0.0.1 --port 4723'
-//                sh './gradlew test --build-cache'
+                sh './gradlew test --build-cache'
                 sh 'echo "Automation tests were executed"'
 //                sh './gradlew clean build allureReport'
             }
