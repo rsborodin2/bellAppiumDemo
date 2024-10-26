@@ -69,8 +69,8 @@ public class BaseTest {
         Allure.addAttachment("Текущий пакет", Objects.requireNonNull(driver.getCurrentPackage()));
         Allure.addAttachment("Статус",driver.getStatus().toString());
         Allure.addAttachment("Размер экрана",driver.getDisplayDensity().toString());
-        Allure.addAttachment("Версия АПК", executeBash("adb shell dumpsys package io.appium.android.apis | grep versionName").split("=")[1]);
-        disableAnimationOnEmulator();
+       // Allure.addAttachment("Версия АПК", executeBash("adb shell dumpsys package io.appium.android.apis | grep versionName").split("=")[1]);
+      //  disableAnimationOnEmulator();
     }
 
     /**
