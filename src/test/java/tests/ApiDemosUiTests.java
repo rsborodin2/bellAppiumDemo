@@ -1,5 +1,7 @@
 package tests;
 
+import static utils.DeviceHelper.executeBash;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -53,6 +55,8 @@ public class ApiDemosUiTests extends BaseTest {
                 new ActivityPage(driver).clickTextViewByText("Custom Dialog");
                 String expectedTitle = "App/Activity/Custom Dialog";
                 String actualTitle = new CustomDialogPage(driver).title.getText();
+                Allure.addAttachment("Версия АПК", executeBash("adb shell dumpsys package io.appium.android.apis | grep versionName").split("=")[1]);
+
                 Assertions.assertEquals(actualTitle,expectedTitle);
                 driver.navigate().back();
                 new ActivityPage(driver);
