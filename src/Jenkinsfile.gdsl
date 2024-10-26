@@ -1,14 +1,4 @@
 #!/usr/bin/env groovy
-/*
-Jenkins can be installed using the Homebrew package manager. Homebrew formula: jenkins-lts This is a package supported by a third party which may be not as frequently updated as packages supported by the Jenkins project directly.
-Sample commands:
-Install the latest LTS version: brew install jenkins-lts
-Start the Jenkins service: brew services start jenkins-lts
-Restart the Jenkins service: brew services restart jenkins-lts
-Update the Jenkins version: brew upgrade jenkins-lts
-After starting the Jenkins service, browse to http://localhost:8080 and follow the instructions to complete the installation. Also see the external materials for installation guidelines. For example, this blogpost describes the installation process.
- */
-
 pipeline {
     agent any
     stages {
@@ -18,18 +8,16 @@ pipeline {
             }
         }
         stage('Test') {
-                steps {
+            steps {
+                script{
                     try {
-
-                    sh './gradlew test --stacktrace --build-cache'
-                    sh 'echo "Automation tests were executed"'
-
-                }            finally {
+                        sh './gradlew test --stacktrace --build-cache'
+                        sh 'echo "Automation tests were executed"'
+                    } finally {
                         allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
                     }
-
+                }
             }
-
         }
     }
 }
