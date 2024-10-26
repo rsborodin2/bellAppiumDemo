@@ -43,7 +43,6 @@ public class DeviceHelper {
         try {
             p = Runtime.getRuntime().exec(command); //получаем инстанс терминала и посылаем скрипт
         } catch (IOException e){
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
         final String[] message = {""}; //массив с 1 элементом для записи строк из терминала
@@ -70,4 +69,9 @@ public class DeviceHelper {
         }
         return message[0];
     }
+
+    public static String executeAdb(String command){
+        return executeBash("/usr/local/bin/adb " + command);
+    }
+
 }
