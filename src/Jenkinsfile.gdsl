@@ -35,7 +35,7 @@ pipeline {
 //                sh "ls -l"
 //                sh "echo $PATH"
 //                sh "java -version"
-                sh "/usr/local/bin/appium --version"
+                sh "which appium"
 //                sh "echo $JAVA_HOME"
 //                sh '/usr/local/bin/appium --address 127.0.0.1 --port 4723'
 //                sh './gradlew test --build-cache'
