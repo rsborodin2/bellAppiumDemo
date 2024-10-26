@@ -11,41 +11,21 @@ After starting the Jenkins service, browse to http://localhost:8080 and follow t
 
 pipeline {
     agent any
-
     stages {
         stage('Clone Repository') {
             steps {
                 git 'https://github.com/rsborodin2/bellAppiumDemo.git' // replace with your repo
             }
         }
-//        stage ('Install dependencies') {
-//            steps {
-//                sh "apk add nodejs"
-//                sh "echo $PATH"
-//                sh "npm install"
-//            }
-//        }
         stage('Test') {
             steps {
-                sh "/usr/local/bin/adb --version"
-                sh "/usr/local/bin/node -v"
-//                sh "whoami"
-//                sh "pwd"
-//                sh "ls -l"
-//                sh "echo $PATH"
-//                sh "java -version"
-                //  sh "/usr/local/bin/npm -v"
-                //sh "which java"
-//                sh "which appium"
-//                sh "echo $JAVA_HOME"
-//                sh '/usr/local/bin/appium --address 127.0.0.1 --port 4723'
                 try {
                     sh './gradlew test --stacktrace --build-cache'
                     sh 'echo "Automation tests were executed"'
                 }finally {
                     allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
                 }
-
+                
             }
         }
     }
