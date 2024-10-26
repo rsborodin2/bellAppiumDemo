@@ -13,9 +13,11 @@ pipeline {
                     try {
                         //sh '/usr/local/bin/appium --version'
                         sh './gradlew test --build-cache'
-                    } catch (AssertionError e){
-                        
-                    } finally {
+                    } catch (AssertionError | Exception e){
+                        e.printStackTrace()
+                        currentBuild.result = "UNSTABLE"
+                    }
+                    finally {
                         allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
                     }
                 }
