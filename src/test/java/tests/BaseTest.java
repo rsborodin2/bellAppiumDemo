@@ -18,12 +18,9 @@ import io.qameta.allure.Allure;
 import listeners.ScreenshotUtils;
 
 public class BaseTest {
-    static AppiumDriverLocalService service;
     AndroidDriver driver;
     @BeforeAll
     public static void beforeAll() {
-        //service = AppiumDriverLocalService.buildDefaultService();
-        //service.start();
     }
 
     @AfterAll
