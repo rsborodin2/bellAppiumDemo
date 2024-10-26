@@ -27,7 +27,6 @@ pipeline {
 //        }
         stage('Test') {
             steps {
-
                 sh "/usr/local/bin/adb --version"
                 sh "/usr/local/bin/node -v"
 //                sh "whoami"
@@ -42,6 +41,7 @@ pipeline {
 //                sh '/usr/local/bin/appium --address 127.0.0.1 --port 4723'
                 sh './gradlew test --stacktrace --build-cache'
                 sh 'echo "Automation tests were executed"'
+                allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
 //                sh './gradlew clean build allureReport'
             }
         }
