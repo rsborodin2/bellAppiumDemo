@@ -11,8 +11,8 @@ pipeline {
             steps {
                 script{
                     try {
-                        sh '/usr/local/bin/appium --version'
-                        sh './gradlew test --stacktrace --build-cache'
+                        //sh '/usr/local/bin/appium --version'
+                        sh './gradlew test --build-cache'
                         sh 'echo "Automation tests were executed"'
                     } finally {
                         allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
