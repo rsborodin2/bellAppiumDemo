@@ -18,17 +18,18 @@ pipeline {
             }
         }
         stage('Test') {
-            try {
                 steps {
+                    try {
 
                     sh './gradlew test --stacktrace --build-cache'
                     sh 'echo "Automation tests were executed"'
-                }
+
+                }            finally {
+                        allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
+                    }
 
             }
-            finally {
-                allure includeProperties: false, jdk: '', results: [[path: 'build/allure-results']]
-            }
+
         }
     }
 }
